@@ -16,9 +16,9 @@ MODEL_FILES = 			\
 
 # Include standard Makefile templates.
 
-include ../mlhub.mk
 include ../git.mk
 include ../pandoc.mk
+include ../mlhub.mk
 
 $(MODEL).RData: train.R
 	Rscript $<
