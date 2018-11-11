@@ -13,6 +13,10 @@ The data used comes from
 Further support material is available from
 `<https://essentials.togaware.com/>`_.
 
+Visit the github repository for examples of its usage:
+https://github.com/gjwgit/ports
+
+
 -----
 Usage
 -----

@@ -95,7 +95,7 @@ ds[96:117, 1:4] %>%
   theme(axis.text.x=element_text(angle=45, hjust=1, size=10)) +
   theme_bitre
 invisible(dev.off())
-system(sprintf("evince --preview %s", fname), ignore.stderr=TRUE, wait=FALSE)
+system(sprintf("atril --preview %s", fname), ignore.stderr=TRUE, wait=FALSE)
 
 #-----------------------------------------------------------------------
 # Data Preparation.
@@ -143,7 +143,7 @@ tds %>%
   annotate("text", label="See inset", x=28, y=3.3, size=4) +
   theme(legend.position="bottom")
 invisible(dev.off())
-system(sprintf("evince --preview %s", fname), ignore.stderr=TRUE, wait=FALSE)
+system(sprintf("atril --preview %s", fname), ignore.stderr=TRUE, wait=FALSE)
 
 #-----------------------------------------------------------------------
 # Insert.
@@ -168,7 +168,7 @@ tds %>%
   geom_text(data=filter(tds,  port%in%above), vjust=-1.0) +
   theme(legend.position="bottom")
 invisible(dev.off())
-system(sprintf("evince --preview %s", fname), ignore.stderr=TRUE, wait=FALSE)
+system(sprintf("atril --preview %s", fname), ignore.stderr=TRUE, wait=FALSE)
 
 #-----------------------------------------------------------------------
 # Faceted Plot.
@@ -221,7 +221,7 @@ pdf(file=fname, height=6, width=8)
 print(p1)
 print(p2, vp=viewport(x=0.72, y=0.11, height=0.28, width=0.54))
 invisible(dev.off())
-system(sprintf("evince --preview %s", fname), ignore.stderr=TRUE, wait=FALSE)
+system(sprintf("atril --preview %s", fname), ignore.stderr=TRUE, wait=FALSE)
 
 #-----------------------------------------------------------------------
 # Horizontal Bar Chart
@@ -245,7 +245,7 @@ ds[48:56, 1:2] %>%
   labs(x="", y="Per cent") + 
   coord_flip()
 invisible(dev.off())
-system(sprintf("evince --preview %s", fname), ignore.stderr=TRUE, wait=FALSE)
+system(sprintf("atril --preview %s", fname), ignore.stderr=TRUE, wait=FALSE)
 
 #-----------------------------------------------------------------------
 # Data Preparation.
@@ -312,7 +312,7 @@ tds %>%
   scale_y_reverse() +
   theme_bitre
 invisible(dev.off())
-system(sprintf("evince --preview %s", fname), ignore.stderr=TRUE, wait=FALSE)
+system(sprintf("atril --preview %s", fname), ignore.stderr=TRUE, wait=FALSE)
 
 #-----------------------------------------------------------------------
 # Data Preparation.
@@ -350,7 +350,7 @@ tds %>%
             colour="white") +
   theme_bitre
 invisible(dev.off())
-system(sprintf("evince --preview %s", fname), ignore.stderr=TRUE, wait=FALSE)
+system(sprintf("atril --preview %s", fname), ignore.stderr=TRUE, wait=FALSE)
 
 #-----------------------------------------------------------------------
 # Suggest next step.
