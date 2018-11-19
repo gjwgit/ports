@@ -352,9 +352,3 @@ tds %>%
 invisible(dev.off())
 system(sprintf("atril --preview %s", fname), ignore.stderr=TRUE, wait=FALSE)
 
-#-----------------------------------------------------------------------
-# Suggest next step.
-#-----------------------------------------------------------------------
-
-cat("\nYou may like to view the code for this demo with:\n",
-    "\n  $ ml print ports-plots\n\n")
