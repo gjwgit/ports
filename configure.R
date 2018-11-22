@@ -5,8 +5,8 @@
 
 # Use atril to display PDF files to avoid broken evince on Azure DSVM.
 
-cat("Install system dependencies if needed...\n atril\n\n")
-system("sudo apt-get install -y atril", ignore.stderr=TRUE, ignore.stdout=TRUE)
+cat("Install system dependencies if needed...\n xpdf\n")
+system("sudo apt-get install -y xpdf")
 
 # Identify the required packages.
 
@@ -30,7 +30,7 @@ dir.create(lib, showWarnings=FALSE, recursive=TRUE)
 
 if (length(install))
 {
-  cat(sprintf("\nInstalling '%s' into '%s'...\n", paste(install, collapse="', '"), lib))
+  cat(sprintf("Installing '%s' into '%s'...\n", paste(install, collapse="', '"), lib))
   install.packages(install, lib=lib)
 } else
 {
