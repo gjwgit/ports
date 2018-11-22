@@ -23,19 +23,21 @@ suppressMessages(
   library(tidyr)        # Tidy the dataset.
 })
 
-cat("\n========================================",
-    "\nVisualising the Australian Ports Dataset",
-    "\n========================================\n\n")
+cat("========================================
+Visualising the Australian Ports Dataset
+========================================
 
-cat("The Australian Ports dataset (http://essentials.togaware.com/ports.xlsx)\n")
-cat("is used to illustrate Data Visualisation.\n\n")
+The Australian Ports dataset (http://essentials.togaware.com/ports.xlsx)
+is used to illustrate Data Visualisation.
 
-cat("These examples come from the book, Essentials of Data Science, by Graham Williams.\n")
-cat("Used with permission. Visit https://essentials.togaware.com\n\n")
+These examples come from the book, Essentials of Data Science, by Graham Williams.
+Used with permission. Visit https://essentials.togaware.com
 
-cat("Press the <Enter> key after each message to display the referenced plot.\n")
-cat("Review the plot and discern the story the data it is telling us.\n")
-cat("Close the graphic window (Ctrl-W) to continue on to the next plot.\n")
+Review each plot to understand the story the data it is telling us.
+Close the graphic window (Ctrl-w) to continue on to the next plot.
+
+Press Enter to continue: ")
+invisible(readChar("stdin", 1))
 
 #-----------------------------------------------------------------------
 # Prepare the Ports Dataset.
@@ -73,10 +75,15 @@ theme_bitre <- scale_fill_manual(values=cols)
 # Compare import and export by weight.
 #-----------------------------------------------------------------------
 
-cat("\nShow a faceted dodged bar plot comparing the import and export total weight",
-    "\nacross multiple years aggregated over the largest 17 ports and all Australian",
-    "\nports, respectively:")
-invisible(readChar("stdin", 1))
+cat("
+=======================
+Faceted Dodged Bar Plot
+=======================
+
+The faceted dodged bar plot here compares the import and export total weight
+across multiple years aggregated over the largest 17 ports and all Australian
+ports, respectively.
+")
 
 fname <- "ports_weight.pdf"
 pdf(file=fname, width=12)
@@ -95,7 +102,7 @@ ds[96:117, 1:4] %>%
   theme(axis.text.x=element_text(angle=45, hjust=1, size=10)) +
   theme_bitre
 invisible(dev.off())
-system(sprintf("atril --preview %s", fname), ignore.stderr=TRUE, wait=FALSE)
+system(sprintf("xpdf %s", fname), ignore.stderr=TRUE, wait=TRUE)
 
 #-----------------------------------------------------------------------
 # Data Preparation.
@@ -123,8 +130,19 @@ tds
 # Scatter Plot with Insert.
 #-----------------------------------------------------------------------
 
-cat("\nShow a labelled scatter plot with an insert: ")
-invisible(readChar("stdin", 1))
+cat("
+=======================
+Scatter Plot with Inset
+=======================
+
+Next we see a labelled scatter plot with an inset.
+
+We can see the throughput for a specific year compared to the average
+throughput over all years. A cluster of points appear in the bottom
+left corner and we note that it would be difficult to label these points.
+Thus a seprate plot will be generated for these points, and suggest this
+by shading the region as an Inset.
+")
 
 fname <- "ports_scatter.pdf"
 pdf(file=fname, width=8)
@@ -143,7 +161,7 @@ tds %>%
   annotate("text", label="See inset", x=28, y=3.3, size=4) +
   theme(legend.position="bottom")
 invisible(dev.off())
-system(sprintf("atril --preview %s", fname), ignore.stderr=TRUE, wait=FALSE)
+system(sprintf("xpdf %s", fname), ignore.stderr=TRUE, wait=TRUE)
 
 #-----------------------------------------------------------------------
 # Insert.
@@ -152,8 +170,14 @@ system(sprintf("atril --preview %s", fname), ignore.stderr=TRUE, wait=FALSE)
 above <- c("Townsville", "Fremantle")
 tds %<>% filter(port != "Darwin" & type == "Mixed")
 
-cat("\nThe insert - a labelled scatter plot: ")
-invisible(readChar("stdin", 1))
+cat("
+=====
+Inset
+=====
+
+The inset itself is also a labelled scatter plot. Here we can readily
+label the points with the corresponding port names.
+")
 
 fname <- "ports_scatter_insert.pdf"
 pdf(file=fname, width=8)
@@ -168,14 +192,22 @@ tds %>%
   geom_text(data=filter(tds,  port%in%above), vjust=-1.0) +
   theme(legend.position="bottom")
 invisible(dev.off())
-system(sprintf("atril --preview %s", fname), ignore.stderr=TRUE, wait=FALSE)
+system(sprintf("xpdf %s", fname), ignore.stderr=TRUE, wait=TRUE)
 
 #-----------------------------------------------------------------------
 # Faceted Plot.
 #-----------------------------------------------------------------------
 
-cat("\nShow a faceted bar plot with an embedded second bar plot: ")
-invisible(readChar("stdin", 1))
+cat("
+================
+Faceted Bar Plot
+================
+
+We build another faceted bar plot, this time with an embedded second bar plot
+located in the bottom right corner. That area of the plot would otherwise have
+been an empty space and so we take the oppotunity to include further related
+information, without overloading the viewer.
+")
 
 # Build the main faceted plot.
 
@@ -221,14 +253,21 @@ pdf(file=fname, height=6, width=8)
 print(p1)
 print(p2, vp=viewport(x=0.72, y=0.11, height=0.28, width=0.54))
 invisible(dev.off())
-system(sprintf("atril --preview %s", fname), ignore.stderr=TRUE, wait=FALSE)
+system(sprintf("xpdf %s", fname), ignore.stderr=TRUE, wait=TRUE)
 
 #-----------------------------------------------------------------------
 # Horizontal Bar Chart
 #-----------------------------------------------------------------------
 
-cat("\nShow a horizontal bar chart: ")
-invisible(readChar("stdin", 1))
+cat("
+====================
+Horizontal Bar Chart
+====================
+
+Depending on the data a horizontal bar chart can provide a useful
+alternative to a vertical bar chart. With the longer labels and the
+few bars the horizontal aspect here is attractive.
+")
 
 fname <- "ports_horiz_bar_chart.pdf"
 pdf(file=fname, height=3, width=8)
@@ -245,7 +284,7 @@ ds[48:56, 1:2] %>%
   labs(x="", y="Per cent") + 
   coord_flip()
 invisible(dev.off())
-system(sprintf("atril --preview %s", fname), ignore.stderr=TRUE, wait=FALSE)
+system(sprintf("xpdf %s", fname), ignore.stderr=TRUE, wait=TRUE)
 
 #-----------------------------------------------------------------------
 # Data Preparation.
@@ -294,8 +333,16 @@ lbls <-
 # Horizontal Bar Chart with Multiple Stacks.
 #-----------------------------------------------------------------------
 
-cat("\nShow a horizontal bar chart with multiple stacks: ")
-invisible(readChar("stdin", 1))
+cat("
+============================
+Horizontal Stacked Bar Chart
+============================
+
+This horizontal bar chart shows the use of multiple stacks with each
+labelled to indicate the size so as to support the viewer to properly
+interpret the information being presented. Quite a bit of information
+is conveyed here, in an effective way.
+")
 
 fname <- "ports_occ_bar.pdf"
 pdf(file=fname, width=8, height=3)
@@ -312,7 +359,7 @@ tds %>%
   scale_y_reverse() +
   theme_bitre
 invisible(dev.off())
-system(sprintf("atril --preview %s", fname), ignore.stderr=TRUE, wait=FALSE)
+system(sprintf("xpdf %s", fname), ignore.stderr=TRUE, wait=TRUE)
 
 #-----------------------------------------------------------------------
 # Data Preparation.
@@ -336,8 +383,15 @@ lbls <- data.frame(x=c(.7, 1, 1.3, 1.7, 2, 2.3),
 # Simple Bar Chart
 #-----------------------------------------------------------------------
 
-cat("\nShow a simple bar chart with dodged and labelled bars: ")
-invisible(readChar("stdin", 1))
+cat("
+=======================
+Simple Dodged Bar Chart
+=======================
+
+This example of a simple bar chart with dodged and labelled bars presents
+several dimensions frm the data to capture a specific narative for the
+story presented from the data.
+")
 
 fname <- "ports_simple_bar.pdf"
 pdf(file=fname, width=7, height=5)
@@ -350,5 +404,5 @@ tds %>%
             colour="white") +
   theme_bitre
 invisible(dev.off())
-system(sprintf("atril --preview %s", fname), ignore.stderr=TRUE, wait=FALSE)
+system(sprintf("xpdf %s", fname), ignore.stderr=TRUE, wait=TRUE)
 
