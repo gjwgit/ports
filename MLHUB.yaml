@@ -1,13 +1,14 @@
 meta:
-  name      : ports
-  version   : 2.0.0
-  keywords  : graphics, visualisation, plot, bar chart, scatter plot, ggplot2, ports
-  languages : R
-  license   : gpl3
-  display   : demo
-  title     : Demostrate the concept of visualising data.
-  author    : Graham.Williams@togaware.com
-  url       : https://github.com/gjwgit/ports
+  name       : ports
+  version    : 2.0.0
+  keywords   : graphics, visualisation, plot, bar chart, scatter plot, ggplot2, ports
+  languages  : R
+  license    : gpl3
+  display    : demo
+  title      : Demostrate the concept of visualising data.
+  author     : Graham.Williams@togaware.com
+  maintainer : Graham.Williams@togaware.com
+  url        : https://github.com/gjwgit/ports
 dependencies:
   cran: directlabels, dplyr, ggplot2, grid, magrittr, rattle, readr, readxl,
         scales, stringi, stringr, tidyr
