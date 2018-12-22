@@ -15,6 +15,7 @@ dependencies:
   system : xpdf
   cran   : directlabels, dplyr, ggplot2, grid, magrittr, rattle, readr, readxl,
            scales, stringi, stringr, tidyr
+  files  : demo.R, ports.xlsx, print.R, README.rst
 commands:
   demo  : Step through the various plots.
   print : Display the actual code.
