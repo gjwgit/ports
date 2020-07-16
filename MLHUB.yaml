@@ -2,7 +2,7 @@
 meta:
   name       : ports
   version    : 2.0.0
-  keywords   : graphics, visualisation, plot, bar chart, scatter plot, ggplot2, ports
+  keywords   : graphics, visualisation, plot, bar chart, scatter plot, ggplot2, sea ports
   languages  : R
   license    : gpl3
   display    : demo
