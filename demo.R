@@ -3,6 +3,16 @@
 #
 # Copyright 2018 Graham.Williams@togaware.com
 
+library(mlhub)
+mlcat("Visualising the Australian Ports Dataset",
+"The Australian Ports dataset (http://essentials.togaware.com/ports.xlsx)
+is used to illustrate Data Visualisation.
+
+These examples come from the book, Essentials of Data Science, by Graham Williams.
+Used with permission. Visit https://essentials.togaware.com
+
+Review each plot to understand the story the data it is telling us.
+Close the graphic window (Ctrl-w) to continue on to the next plot.")
 #-----------------------------------------------------------------------
 # Load required packages from local library into the R session.
 #-----------------------------------------------------------------------
@@ -22,22 +32,6 @@ suppressMessages(
   library(stringr)      # String manpiulation.
   library(tidyr)        # Tidy the dataset.
 })
-
-cat("========================================
-Visualising the Australian Ports Dataset
-========================================
-
-The Australian Ports dataset (http://essentials.togaware.com/ports.xlsx)
-is used to illustrate Data Visualisation.
-
-These examples come from the book, Essentials of Data Science, by Graham Williams.
-Used with permission. Visit https://essentials.togaware.com
-
-Review each plot to understand the story the data it is telling us.
-Close the graphic window (Ctrl-w) to continue on to the next plot.
-
-Press Enter to continue: ")
-invisible(readChar("stdin", 1))
 
 #-----------------------------------------------------------------------
 # Prepare the Ports Dataset.
@@ -75,15 +69,12 @@ theme_bitre <- scale_fill_manual(values=cols)
 # Compare import and export by weight.
 #-----------------------------------------------------------------------
 
-cat("
-=======================
-Faceted Dodged Bar Plot
-=======================
+mlask()
 
-The faceted dodged bar plot here compares the import and export total weight
-across multiple years aggregated over the largest 17 ports and all Australian
-ports, respectively.
-")
+mlcat("Faceted Dodged Bar Plot",
+"The faceted dodged bar plot here compares the import and export total
+weight across multiple years aggregated over the largest 17 ports and
+all Australianports, respectively.")
 
 fname <- "ports_weight.pdf"
 pdf(file=fname, width=12)
@@ -130,12 +121,10 @@ tds
 # Scatter Plot with Insert.
 #-----------------------------------------------------------------------
 
-cat("
-=======================
-Scatter Plot with Inset
-=======================
+mlask()
 
-Next we see a labelled scatter plot with an inset.
+mlcat("Scatter Plot with Inset",
+"Next we see a labelled scatter plot with an inset.
 
 We can see the throughput for a specific year compared to the average
 throughput over all years. A cluster of points appear in the bottom
@@ -167,17 +156,14 @@ system(sprintf("xpdf %s", fname), ignore.stderr=TRUE, wait=TRUE)
 # Insert.
 #-----------------------------------------------------------------------
 
+mlask()
+
 above <- c("Townsville", "Fremantle")
 tds %<>% filter(port != "Darwin" & type == "Mixed")
 
-cat("
-=====
-Inset
-=====
-
-The inset itself is also a labelled scatter plot. Here we can readily
-label the points with the corresponding port names.
-")
+mlcat("Inset",
+"The inset itself is also a labelled scatter plot. Here we can readily
+label the points with the corresponding port names.", end="\n")
 
 fname <- "ports_scatter_insert.pdf"
 pdf(file=fname, width=8)
@@ -198,16 +184,13 @@ system(sprintf("xpdf %s", fname), ignore.stderr=TRUE, wait=TRUE)
 # Faceted Plot.
 #-----------------------------------------------------------------------
 
-cat("
-================
-Faceted Bar Plot
-================
+mlask()
 
-We build another faceted bar plot, this time with an embedded second bar plot
+mlcat("Faceted Bar Plot",
+"We build another faceted bar plot, this time with an embedded second bar plot
 located in the bottom right corner. That area of the plot would otherwise have
 been an empty space and so we take the oppotunity to include further related
-information, without overloading the viewer.
-")
+information, without overloading the viewer.", end="\n")
 
 # Build the main faceted plot.
 
@@ -259,15 +242,12 @@ system(sprintf("xpdf %s", fname), ignore.stderr=TRUE, wait=TRUE)
 # Horizontal Bar Chart
 #-----------------------------------------------------------------------
 
-cat("
-====================
-Horizontal Bar Chart
-====================
+mlask()
 
-Depending on the data a horizontal bar chart can provide a useful
+mlcat("Horizontal Bar Chart",
+"Depending on the data a horizontal bar chart can provide a useful
 alternative to a vertical bar chart. With the longer labels and the
-few bars the horizontal aspect here is attractive.
-")
+few bars the horizontal aspect here is attractive.", end="\n")
 
 fname <- "ports_horiz_bar_chart.pdf"
 pdf(file=fname, height=3, width=8)
@@ -290,7 +270,7 @@ system(sprintf("xpdf %s", fname), ignore.stderr=TRUE, wait=TRUE)
 # Data Preparation.
 #-----------------------------------------------------------------------
 
-tds <- 
+tds <-
   ds[39:40, 2:9] %>%
   set_names(ds[38, 2:9]) %>%
   mutate(type=c("Mixed Ports", "Bulk Ports")) %>%
@@ -333,16 +313,13 @@ lbls <-
 # Horizontal Bar Chart with Multiple Stacks.
 #-----------------------------------------------------------------------
 
-cat("
-============================
-Horizontal Stacked Bar Chart
-============================
+mlask()
 
-This horizontal bar chart shows the use of multiple stacks with each
+mlcat("Horizontal Stacked Bar Chart",
+"This horizontal bar chart shows the use of multiple stacks with each
 labelled to indicate the size so as to support the viewer to properly
 interpret the information being presented. Quite a bit of information
-is conveyed here, in an effective way.
-")
+is conveyed here, in an effective way.", end="\n")
 
 fname <- "ports_occ_bar.pdf"
 pdf(file=fname, width=8, height=3)
@@ -383,15 +360,12 @@ lbls <- data.frame(x=c(.7, 1, 1.3, 1.7, 2, 2.3),
 # Simple Bar Chart
 #-----------------------------------------------------------------------
 
-cat("
-=======================
-Simple Dodged Bar Chart
-=======================
+mlask()
 
-This example of a simple bar chart with dodged and labelled bars presents
+mlcat("Simple Dodged Bar Chart",
+"This example of a simple bar chart with dodged and labelled bars presents
 several dimensions frm the data to capture a specific narative for the
-story presented from the data.
-")
+story presented from the data.", end="\n")
 
 fname <- "ports_simple_bar.pdf"
 pdf(file=fname, width=7, height=5)
