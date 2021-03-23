@@ -37,7 +37,6 @@ suppressMessages(
 # Prepare the Ports Dataset.
 #-----------------------------------------------------------------------
 
-mlask()
 # Local location of the downloaded file.
 
 dspath <- "ports.xlsx"
@@ -94,7 +93,7 @@ ds[96:117, 1:4] %>%
   theme(axis.text.x=element_text(angle=45, hjust=1, size=10)) +
   theme_bitre
 invisible(dev.off())
-system(sprintf("evince %s", fname), ignore.stderr=TRUE, wait=TRUE)
+#system(sprintf("evince %s", fname), ignore.stderr=TRUE, wait=TRUE)
 
 mlpreview(fname, begin="")
 
