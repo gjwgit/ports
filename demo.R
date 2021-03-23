@@ -93,9 +93,7 @@ ds[96:117, 1:4] %>%
   theme(axis.text.x=element_text(angle=45, hjust=1, size=10)) +
   theme_bitre
 invisible(dev.off())
-#system(sprintf("evince %s", fname), ignore.stderr=TRUE, wait=TRUE)
-
-mlpreview(fname, begin="")
+preview(fname, begin="")
 
 #-----------------------------------------------------------------------
 # Data Preparation.
@@ -152,8 +150,6 @@ tds %>%
   annotate("text", label="See inset", x=28, y=3.3, size=4) +
   theme(legend.position="bottom")
 invisible(dev.off())
-system(sprintf("evince %s", fname), ignore.stderr=TRUE, wait=TRUE)
-
 mlpreview(fname, begin="")
 
 #-----------------------------------------------------------------------
@@ -182,8 +178,6 @@ tds %>%
   geom_text(data=filter(tds,  port%in%above), vjust=-1.0) +
   theme(legend.position="bottom")
 invisible(dev.off())
-system(sprintf("evince %s", fname), ignore.stderr=TRUE, wait=TRUE)
-
 mlpreview(fname, begin="")
 
 #-----------------------------------------------------------------------
@@ -201,7 +195,7 @@ information, without overloading the viewer.", end="\n")
 # Build the main faceted plot.
 
 ds[20:36, 1:13] %>%
-  set_names(c("port", ds[19, 2:13])) %>% 
+  set_names(c("port", toString(ds[19, 2:13]))) %>%
   gather(period, calls, -port) %>%
   mutate(calls=as.integer(calls)) %>%
   ggplot(aes(x=period, y=calls)) +
@@ -215,7 +209,7 @@ p1
 # Generate the second plot.
 
 ds[20:36, 1:13] %>%
-  set_names(c("port", ds[19, 2:13])) %>%
+  set_names(c("port", toString(ds[19, 2:13]))) %>%
   select(port, 2, 13) %>%
   set_names(c('port', 'start', 'end')) %>%
   mutate(
@@ -242,8 +236,6 @@ pdf(file=fname, height=6, width=8)
 print(p1)
 print(p2, vp=viewport(x=0.72, y=0.11, height=0.28, width=0.54))
 invisible(dev.off())
-system(sprintf("evince %s", fname), ignore.stderr=TRUE, wait=TRUE)
-
 mlpreview(fname, begin="")
 
 #-----------------------------------------------------------------------
@@ -272,8 +264,6 @@ ds[48:56, 1:2] %>%
   labs(x="", y="Per cent") + 
   coord_flip()
 invisible(dev.off())
-system(sprintf("evince %s", fname), ignore.stderr=TRUE, wait=TRUE)
-
 mlpreview(fname, begin="")
 
 #-----------------------------------------------------------------------
@@ -282,7 +272,7 @@ mlpreview(fname, begin="")
 
 tds <-
   ds[39:40, 2:9] %>%
-  set_names(ds[38, 2:9]) %>%
+  set_names(toString(ds[38, 2:9])) %>%
   mutate(type=c("Mixed Ports", "Bulk Ports")) %>%
   gather(occupation, percent, -type) %>%
   mutate(
@@ -346,8 +336,6 @@ tds %>%
   scale_y_reverse() +
   theme_bitre
 invisible(dev.off())
-system(sprintf("evince %s", fname), ignore.stderr=TRUE, wait=TRUE)
-
 mlpreview(fname, begin="")
 
 #-----------------------------------------------------------------------
@@ -355,7 +343,7 @@ mlpreview(fname, begin="")
 #-----------------------------------------------------------------------
 
 ds[43:45, 1:3] %>%
-  set_names(c("type", ds[42, 2:3])) %>%
+  set_names(c("type", toString(ds[42, 2:3]))) %>%
   gather(var, count, -type) %>% 
   mutate(
     count = as.integer(count),
@@ -390,8 +378,6 @@ tds %>%
             colour="white") +
   theme_bitre
 invisible(dev.off())
-system(sprintf("evince %s", fname), ignore.stderr=TRUE, wait=TRUE)
-
 mlpreview(fname, begin="")
 
 
