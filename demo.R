@@ -37,6 +37,7 @@ suppressMessages(
 # Prepare the Ports Dataset.
 #-----------------------------------------------------------------------
 
+mlask()
 # Local location of the downloaded file.
 
 dspath <- "ports.xlsx"
@@ -93,7 +94,7 @@ ds[96:117, 1:4] %>%
   theme(axis.text.x=element_text(angle=45, hjust=1, size=10)) +
   theme_bitre
 invisible(dev.off())
-system(sprintf("xpdf %s", fname), ignore.stderr=TRUE, wait=TRUE)
+system(sprintf("evince %s", fname), ignore.stderr=TRUE, wait=TRUE)
 
 #-----------------------------------------------------------------------
 # Data Preparation.
@@ -150,7 +151,7 @@ tds %>%
   annotate("text", label="See inset", x=28, y=3.3, size=4) +
   theme(legend.position="bottom")
 invisible(dev.off())
-system(sprintf("xpdf %s", fname), ignore.stderr=TRUE, wait=TRUE)
+system(sprintf("evince %s", fname), ignore.stderr=TRUE, wait=TRUE)
 
 #-----------------------------------------------------------------------
 # Insert.
@@ -178,7 +179,7 @@ tds %>%
   geom_text(data=filter(tds,  port%in%above), vjust=-1.0) +
   theme(legend.position="bottom")
 invisible(dev.off())
-system(sprintf("xpdf %s", fname), ignore.stderr=TRUE, wait=TRUE)
+system(sprintf("evince %s", fname), ignore.stderr=TRUE, wait=TRUE)
 
 #-----------------------------------------------------------------------
 # Faceted Plot.
@@ -236,7 +237,7 @@ pdf(file=fname, height=6, width=8)
 print(p1)
 print(p2, vp=viewport(x=0.72, y=0.11, height=0.28, width=0.54))
 invisible(dev.off())
-system(sprintf("xpdf %s", fname), ignore.stderr=TRUE, wait=TRUE)
+system(sprintf("evince %s", fname), ignore.stderr=TRUE, wait=TRUE)
 
 #-----------------------------------------------------------------------
 # Horizontal Bar Chart
@@ -264,7 +265,7 @@ ds[48:56, 1:2] %>%
   labs(x="", y="Per cent") + 
   coord_flip()
 invisible(dev.off())
-system(sprintf("xpdf %s", fname), ignore.stderr=TRUE, wait=TRUE)
+system(sprintf("evince %s", fname), ignore.stderr=TRUE, wait=TRUE)
 
 #-----------------------------------------------------------------------
 # Data Preparation.
@@ -336,7 +337,7 @@ tds %>%
   scale_y_reverse() +
   theme_bitre
 invisible(dev.off())
-system(sprintf("xpdf %s", fname), ignore.stderr=TRUE, wait=TRUE)
+system(sprintf("evince %s", fname), ignore.stderr=TRUE, wait=TRUE)
 
 #-----------------------------------------------------------------------
 # Data Preparation.
@@ -378,5 +379,5 @@ tds %>%
             colour="white") +
   theme_bitre
 invisible(dev.off())
-system(sprintf("xpdf %s", fname), ignore.stderr=TRUE, wait=TRUE)
+system(sprintf("evince %s", fname), ignore.stderr=TRUE, wait=TRUE)
 
