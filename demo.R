@@ -96,6 +96,8 @@ ds[96:117, 1:4] %>%
 invisible(dev.off())
 system(sprintf("evince %s", fname), ignore.stderr=TRUE, wait=TRUE)
 
+mlpreview(fname, begin="")
+
 #-----------------------------------------------------------------------
 # Data Preparation.
 #-----------------------------------------------------------------------
@@ -103,7 +105,7 @@ system(sprintf("evince %s", fname), ignore.stderr=TRUE, wait=TRUE)
 ds[2:4, 2:18] %>% 
   t() %>% 
   data.frame(row.names=NULL, stringsAsFactors=FALSE) %>%
-  tbl_df() %>%
+  as_tibble() %>%
   set_names(c("port", "weight", "rate")) %>%
   mutate(
     weight = as.numeric(weight),
@@ -153,6 +155,8 @@ tds %>%
 invisible(dev.off())
 system(sprintf("evince %s", fname), ignore.stderr=TRUE, wait=TRUE)
 
+mlpreview(fname, begin="")
+
 #-----------------------------------------------------------------------
 # Insert.
 #-----------------------------------------------------------------------
@@ -180,6 +184,8 @@ tds %>%
   theme(legend.position="bottom")
 invisible(dev.off())
 system(sprintf("evince %s", fname), ignore.stderr=TRUE, wait=TRUE)
+
+mlpreview(fname, begin="")
 
 #-----------------------------------------------------------------------
 # Faceted Plot.
@@ -239,6 +245,8 @@ print(p2, vp=viewport(x=0.72, y=0.11, height=0.28, width=0.54))
 invisible(dev.off())
 system(sprintf("evince %s", fname), ignore.stderr=TRUE, wait=TRUE)
 
+mlpreview(fname, begin="")
+
 #-----------------------------------------------------------------------
 # Horizontal Bar Chart
 #-----------------------------------------------------------------------
@@ -266,6 +274,8 @@ ds[48:56, 1:2] %>%
   coord_flip()
 invisible(dev.off())
 system(sprintf("evince %s", fname), ignore.stderr=TRUE, wait=TRUE)
+
+mlpreview(fname, begin="")
 
 #-----------------------------------------------------------------------
 # Data Preparation.
@@ -339,6 +349,8 @@ tds %>%
 invisible(dev.off())
 system(sprintf("evince %s", fname), ignore.stderr=TRUE, wait=TRUE)
 
+mlpreview(fname, begin="")
+
 #-----------------------------------------------------------------------
 # Data Preparation.
 #-----------------------------------------------------------------------
@@ -380,4 +392,7 @@ tds %>%
   theme_bitre
 invisible(dev.off())
 system(sprintf("evince %s", fname), ignore.stderr=TRUE, wait=TRUE)
+
+mlpreview(fname, begin="")
+
 
