@@ -93,7 +93,7 @@ ds[96:117, 1:4] %>%
   theme(axis.text.x=element_text(angle=45, hjust=1, size=10)) +
   theme_bitre
 invisible(dev.off())
-preview(fname, begin="")
+mlpreview(fname, begin="")
 
 #-----------------------------------------------------------------------
 # Data Preparation.
