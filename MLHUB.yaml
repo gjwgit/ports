@@ -12,10 +12,24 @@ meta:
   url        : https://github.com/gjwgit/ports
   filename   : pool/main/p/ports/ports_1.1.7.mlm
 dependencies:
-  system : xpdf
-  cran   : directlabels, dplyr, ggplot2, grid, magrittr, rattle, readr, readxl,
-           scales, stringi, stringr, tidyr
-  files  : demo.R, ports.xlsx, print.R, README.rst
+  cran   :
+    - directlabels
+    - dplyr
+    - ggplot2
+    - grid
+    - magrittr
+    - rattle=5.2.0
+    - readr
+    - readxl
+    - scales
+    - stringi
+    - stringr
+    - tidyr
+  files:
+    - README.rst
+    - demo.R
+    - print.R
+    - ports.xlsx
 commands:
   demo  : Step through the various plots.
   print : Display the actual code.

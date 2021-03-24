@@ -2,8 +2,9 @@
 # Introduce the concept of telling the data narative through plots
 #
 # Copyright 2018 Graham.Williams@togaware.com
-
+library(glue) # Format strings: glue().
 library(mlhub)
+
 mlcat("Visualising the Australian Ports Dataset",
 "The Australian Ports dataset (http://essentials.togaware.com/ports.xlsx)
 is used to illustrate Data Visualisation.
@@ -12,6 +13,7 @@ These examples come from the book, Essentials of Data Science, by Graham William
 Used with permission. Visit https://essentials.togaware.com
 
 Review each plot to understand the story the data it is telling us.
+
 Close the graphic window (Ctrl-w) to continue on to the next plot.")
 #-----------------------------------------------------------------------
 # Load required packages from local library into the R session.
@@ -43,7 +45,7 @@ dspath <- "ports.xlsx"
 
 # Ingest the dataset.
 
-ports <- read_excel(path=dspath, sheet=1, col_names=FALSE)
+ports <- read_excel(path=dspath, sheet=1, col_names=FALSE, .name_repair = "minimal")
 
 # Prepare the dataset for usage with our template.
 
@@ -94,7 +96,7 @@ ds[96:117, 1:4] %>%
   theme(axis.text.x=element_text(angle=45, hjust=1, size=10)) +
   theme_bitre
 invisible(dev.off())
-mlpreview(fname, begin="")
+mlpreview(fname, begin="\n")
 
 #-----------------------------------------------------------------------
 # Data Preparation.
@@ -151,7 +153,7 @@ tds %>%
   annotate("text", label="See inset", x=28, y=3.3, size=4) +
   theme(legend.position="bottom")
 invisible(dev.off())
-mlpreview(fname, begin="")
+mlpreview(fname, begin="\n")
 
 #-----------------------------------------------------------------------
 # Insert.
@@ -179,7 +181,7 @@ tds %>%
   geom_text(data=filter(tds,  port%in%above), vjust=-1.0) +
   theme(legend.position="bottom")
 invisible(dev.off())
-mlpreview(fname, begin="")
+mlpreview(fname, begin="\n")
 
 #-----------------------------------------------------------------------
 # Faceted Plot.
@@ -237,7 +239,7 @@ pdf(file=fname, height=6, width=8)
 print(p1)
 print(p2, vp=viewport(x=0.72, y=0.11, height=0.28, width=0.54))
 invisible(dev.off())
-mlpreview(fname, begin="")
+mlpreview(fname, begin="\n")
 
 #-----------------------------------------------------------------------
 # Horizontal Bar Chart
@@ -265,7 +267,7 @@ ds[48:56, 1:2] %>%
   labs(x="", y="Per cent") + 
   coord_flip()
 invisible(dev.off())
-mlpreview(fname, begin="")
+mlpreview(fname, begin="\n")
 
 #-----------------------------------------------------------------------
 # Data Preparation.
@@ -337,7 +339,7 @@ tds %>%
   scale_y_reverse() +
   theme_bitre
 invisible(dev.off())
-mlpreview(fname, begin="")
+mlpreview(fname, begin="\n")
 
 #-----------------------------------------------------------------------
 # Data Preparation.
@@ -379,6 +381,6 @@ tds %>%
             colour="white") +
   theme_bitre
 invisible(dev.off())
-mlpreview(fname, begin="")
+mlpreview(fname, begin="\n")
 
 
