@@ -50,6 +50,7 @@ ports <- read_excel(path=dspath, sheet=1, col_names=FALSE)
 dsname <- "ports"
 ds     <- get(dsname)
 
+
 # Identify specific colors required for the organisaitonal style.
 
 cols <- c('#F6A01A', # Primary Yellow
@@ -101,7 +102,7 @@ mlpreview(fname, begin="")
 
 ds[2:4, 2:18] %>% 
   t() %>% 
-  data.frame(stringsAsFactors=FALSE) %>%
+  data.frame(row.names = NULL, stringsAsFactors=FALSE) %>%
   as_tibble() %>%
   set_names(c("port", "weight", "rate")) %>%
   mutate(
@@ -109,7 +110,7 @@ ds[2:4, 2:18] %>%
     rate   = as.numeric(rate)
   ) %>%
   left_join(ds[7:17, 1:2] %>%
-              set_names(ds[6, 1:2]) %>%
+              set_names(as.vector(unlist(ds[6, 1:2]))) %>%
               gather(type, port) %>%
               na.omit(), 
             by="port") %>% 
@@ -195,7 +196,7 @@ information, without overloading the viewer.", end="\n")
 # Build the main faceted plot.
 
 ds[20:36, 1:13] %>%
-  set_names(c("port", ds[19, 2:13])) %>%
+  set_names(c("port", as.vector(unlist(ds[19, 2:13])))) %>%
   gather(period, calls, -port) %>%
   mutate(calls=as.integer(calls)) %>%
   ggplot(aes(x=period, y=calls)) +
@@ -209,7 +210,7 @@ p1
 # Generate the second plot.
 
 ds[20:36, 1:13] %>%
-  set_names(c("port", ds[19, 2:13])) %>%
+  set_names(c("port", as.vector(unlist(ds[19, 2:13])))) %>%
   select(port, 2, 13) %>%
   set_names(c('port', 'start', 'end')) %>%
   mutate(
@@ -272,7 +273,7 @@ mlpreview(fname, begin="")
 
 tds <-
   ds[39:40, 2:9] %>%
-  set_names(ds[38, 2:9]) %>%
+  set_names(as.vector(unlist(ds[38, 2:9]))) %>%
   mutate(type=c("Mixed Ports", "Bulk Ports")) %>%
   gather(occupation, percent, -type) %>%
   mutate(
@@ -343,7 +344,7 @@ mlpreview(fname, begin="")
 #-----------------------------------------------------------------------
 
 ds[43:45, 1:3] %>%
-  set_names(c("type", ds[42, 2:3])) %>%
+  set_names(c("type", as.vector(unlist(ds[42, 2:3])))) %>%
   gather(var, count, -type) %>% 
   mutate(
     count = as.integer(count),
