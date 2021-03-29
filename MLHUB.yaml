@@ -1,7 +1,7 @@
 --- # PORTS
 meta:
   name       : ports
-  version    : 2.0.0
+  version    : 2.0.1
   keywords   : graphics, visualisation, plot, bar chart, scatter plot, ggplot2, sea ports
   languages  : R
   license    : gpl3
@@ -10,7 +10,6 @@ meta:
   author     : Graham.Williams@togaware.com
   maintainer : Graham.Williams@togaware.com
   url        : https://github.com/gjwgit/ports
-  filename   : pool/main/p/ports/ports_1.1.7.mlm
 dependencies:
   cran   :
     - directlabels
