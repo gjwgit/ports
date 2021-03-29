@@ -12,9 +12,7 @@ is used to illustrate Data Visualisation.
 These examples come from the book, Essentials of Data Science, by Graham Williams.
 Used with permission. Visit https://essentials.togaware.com
 
-Review each plot to understand the story the data it is telling us.
-
-Close the graphic window (Ctrl-w) to continue on to the next plot.")
+Review each plot to understand the story the data it is telling us.")
 #-----------------------------------------------------------------------
 # Load required packages from local library into the R session.
 #-----------------------------------------------------------------------
